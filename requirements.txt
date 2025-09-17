@@ -1,0 +1,44 @@
+# LLM Observability Framework Dependencies
+
+# Core dependencies
+pandas>=1.5.0
+numpy>=1.24.0
+# sqlite3
+
+# Web dashboard
+streamlit>=1.28.0
+plotly>=5.15.0
+
+# HTTP requests and API calls
+requests>=2.31.0
+
+# Data processing and analysis
+scipy>=1.10.0
+
+# Logging and configuration
+pyyaml>=6.0
+
+# Optional dependencies for advanced features
+# Machine learning evaluation
+scikit-learn>=1.3.0
+
+# Natural language processing (optional)
+nltk>=3.8
+textblob>=0.17.1
+
+# Advanced plotting (optional)
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Development dependencies
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+black>=23.0.0
+flake8>=6.0.0
+
+# Documentation
+sphinx>=7.0.0
+sphinx-rtd-theme>=1.3.0
+
+# Environment management
+python-dotenv>=1.0.0
