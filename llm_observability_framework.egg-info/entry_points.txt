@@ -1,0 +1,2 @@
+[console_scripts]
+llm-observability-dashboard = dashboard.streamlit_dashboard:main

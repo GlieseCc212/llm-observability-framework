@@ -1,0 +1,2 @@
+timestamp,request_id,model_name,prompt_tokens,completion_tokens,total_tokens,response_time_ms,cost_usd,success,error_message,quality_score,user_feedback,context_length,temperature,max_tokens
+2025-09-17T15:15:53.900965,368f9594-eaea-48f0-a3d8-a5e6c0adfad3,gpt-4,7,23,31,1384.9340389045437,0.0009299999999999999,1,,,,,,

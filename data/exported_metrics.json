@@ -1,0 +1,19 @@
+[
+  {
+    "timestamp": "2025-09-17T15:15:53.900965",
+    "request_id": "368f9594-eaea-48f0-a3d8-a5e6c0adfad3",
+    "model_name": "gpt-4",
+    "prompt_tokens": 7,
+    "completion_tokens": 23,
+    "total_tokens": 31,
+    "response_time_ms": 1384.9340389045437,
+    "cost_usd": 0.0009299999999999999,
+    "success": 1,
+    "error_message": null,
+    "quality_score": null,
+    "user_feedback": null,
+    "context_length": null,
+    "temperature": null,
+    "max_tokens": null
+  }
+]

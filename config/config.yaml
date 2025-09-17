@@ -1,0 +1,207 @@
+# LLM Observability Framework Configuration
+
+# Database Configuration
+database:
+  metrics_db: "data/llm_metrics.db"
+  alerts_db: "data/alerts.db"
+  evaluations_db: "data/evaluations.db"
+  backup_enabled: true
+  backup_interval_hours: 24
+
+# Monitoring Configuration
+monitoring:
+  performance_tracker:
+    window_size_minutes: 15
+    cleanup_interval_minutes: 5
+    max_data_points: 1000
+  
+  metrics_collector:
+    auto_export_enabled: false
+    export_interval_hours: 1
+    export_format: "json"  # json or csv
+    retention_days: 30
+
+# Dashboard Configuration
+dashboard:
+  streamlit:
+    port: 8501
+    host: "localhost"
+    title: "LLM Observability Dashboard"
+    auto_refresh_seconds: 30
+    max_data_points_display: 10000
+  
+  charts:
+    default_time_range: "24h"
+    update_interval_ms: 5000
+    theme: "plotly_white"  # plotly_white, plotly_dark, etc.
+
+# Alerting Configuration
+alerts:
+  enabled: true
+  cooldown_minutes: 5
+  max_alerts_per_hour: 50
+  
+  # Default thresholds
+  thresholds:
+    response_time_ms:
+      warning: 5000
+      critical: 15000
+    success_rate:
+      warning: 0.95
+      critical: 0.85
+    quality_score:
+      warning: 0.7
+      critical: 0.5
+    cost_per_token:
+      warning: 0.001
+      critical: 0.005
+  
+  # Notification channels
+  notifications:
+    email:
+      enabled: false
+      smtp_server: "smtp.gmail.com"
+      smtp_port: 587
+      use_tls: true
+      from_address: "alerts@yourcompany.com"
+      recipients:
+        - "admin@yourcompany.com"
+        - "devops@yourcompany.com"
+    
+    slack:
+      enabled: false
+      webhook_url: ""
+      channel: "#llm-alerts"
+      username: "LLM Observability"
+      icon_emoji: ":warning:"
+    
+    discord:
+      enabled: false
+      webhook_url: ""
+      username: "LLM Observability"
+    
+    webhook:
+      enabled: false
+      url: ""
+      method: "POST"
+      headers:
+        Content-Type: "application/json"
+      timeout_seconds: 30
+      retry_count: 3
+
+# Evaluation Configuration
+evaluation:
+  enabled: true
+  auto_evaluate: true
+  evaluation_sample_rate: 0.1  # Evaluate 10% of responses
+  
+  # Quality thresholds for automated evaluation
+  quality_thresholds:
+    minimum_quality_score: 0.3
+    minimum_relevance_score: 0.4
+    minimum_coherence_score: 0.5
+    maximum_toxicity_score: 0.2
+    maximum_bias_score: 0.3
+    maximum_hallucination_score: 0.4
+  
+  # Task-specific configurations
+  task_configs:
+    summarization:
+      max_length_words: 200
+      min_coverage_score: 0.6
+    
+    qa:
+      require_directness: true
+      minimum_completeness: 0.5
+    
+    creative:
+      minimum_creativity: 0.4
+      minimum_originality: 0.3
+    
+    technical:
+      require_technical_terms: true
+      minimum_clarity: 0.6
+
+# Logging Configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_enabled: true
+  file_path: "logs/llm_observability.log"
+  file_max_size_mb: 10
+  file_backup_count: 5
+  console_enabled: true
+
+# Performance Configuration
+performance:
+  max_concurrent_evaluations: 4
+  request_timeout_seconds: 30
+  retry_attempts: 3
+  retry_delay_seconds: 1
+  
+  # Memory management
+  max_memory_usage_mb: 1024
+  garbage_collection_interval_minutes: 10
+
+# Security Configuration
+security:
+  api_key_required: false
+  allowed_hosts:
+    - "localhost"
+    - "127.0.0.1"
+  rate_limiting:
+    requests_per_minute: 100
+    burst_size: 20
+
+# Integration Configuration
+integrations:
+  openai:
+    enabled: false
+    api_key_env_var: "OPENAI_API_KEY"
+    organization: ""
+    default_model: "gpt-3.5-turbo"
+  
+  anthropic:
+    enabled: false
+    api_key_env_var: "ANTHROPIC_API_KEY"
+    default_model: "claude-3-sonnet-20240229"
+  
+  huggingface:
+    enabled: false
+    api_key_env_var: "HF_API_KEY"
+    default_model: "microsoft/DialoGPT-medium"
+
+# Export Configuration
+export:
+  formats:
+    - "json"
+    - "csv"
+    - "xlsx"
+  
+  compression: true
+  include_metadata: true
+  
+  scheduled_exports:
+    enabled: false
+    frequency: "daily"  # daily, weekly, monthly
+    time: "02:00"  # HH:MM format
+    retention_days: 90
+
+# Development Configuration
+development:
+  debug_mode: false
+  mock_data_enabled: false
+  test_mode: false
+  profiling_enabled: false
+  
+  # Sample data generation for testing
+  sample_data:
+    generate_on_start: false
+    num_samples: 1000
+    models:
+      - "test-model-1"
+      - "test-model-2"
+    task_types:
+      - "general"
+      - "qa"
+      - "summarization"
